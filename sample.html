@@ -8,10 +8,6 @@
         <script src="js/d3.v3.min.js"></script>
         <script src="js/d3-operatable.js"></script>
         <style>
-            body{
-                /*background-color: yellow;*/
-            }
-
             #view{
                 width: 500px;
                 height: 500px;
@@ -31,30 +27,24 @@
                 background-color: floralwhite;
             }
         </style>
-
     </head>
     <body>
-
         <div id="view">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                     viewBox="0 0 600 600" width="500" height="500">
-                <circle cx="100" cy="80" r="30" fill="red" />
-                <circle cx="200" cy="300" r="60" stroke-width="5" stroke="green" fill="none" />
-                <circle cx="400" cy="200" r="80" stroke-width="5" stroke="blue" fill="none" />
-                <text x="30,60,90,120,150" y="150,145,140,135,130" rotate="-10" font-family="impact" font-size="20" fill="black">Hello</text>
-                <text x="70,100,130,160,190,220" y="170,165,160,155,150,145" rotate="-10" font-family="impact" font-size="20" fill="black">World!</text>
-                </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 viewBox="0 0 600 600" width="500" height="500">
+            <circle cx="100" cy="80" r="30" fill="red" />
+            <circle cx="200" cy="300" r="60" stroke-width="5" stroke="green" fill="none" />
+            <circle cx="400" cy="200" r="80" stroke-width="5" stroke="blue" fill="none" />
+            <text x="30,60,90,120,150" y="150,145,140,135,130" rotate="-10" font-family="impact" font-size="20" fill="black">Hello</text>
+            <text x="70,100,130,160,190,220" y="170,165,160,155,150,145" rotate="-10" font-family="impact" font-size="20" fill="black">World!</text>
+            </svg>
         </div>
-
         <script>
-
             $(function() {
-//                document.getElementsByTagName("svg")[0].oncontextmenu = function(){
-//                    return false;
-//                }
-                d3.select("svg").on("mousedown", function(){console.log("mousedowned!");});//as test
+                d3.select("svg").on("mousedown", function() {
+                    console.log("mousedowned!");
+                });//as test
                 d3.select("svg").operatable();
-                  
             });
         </script>
     </body>
