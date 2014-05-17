@@ -84,7 +84,12 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
             stroke: "black", 
             "stroke-width":scale
         })
-        .transition().duration(ANIMATION_DURATION).attr({r: 50 * scale, "fill-opacity": 0}).remove();
+        .transition().duration(ANIMATION_DURATION)
+        .attr({
+//            r: 50 * scale, 
+            r : dest_h /4, 
+            "fill-opacity": 0
+        }).remove();
     };
 
     var zoom = d3.behavior.zoom().on("zoom", function(d) {
@@ -102,16 +107,20 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
         self.attr("viewBox", prop.join(" "));
     };
     var mouseOnDragStart;
+    var adjustPosition = function(ctx){
+        var mouse = d3.mouse(ctx);
+        move(mouse[0] - mouseOnDragStart[0], mouse[1] - mouseOnDragStart[1]);
+    };
 
     var drag = d3.behavior.drag().on("drag", function() {
 //        move(d3.event.dx, d3.event.dy); //this make position gap
-        var mouse = d3.mouse(this);
-        move(mouse[0] - mouseOnDragStart[0], mouse[1] - mouseOnDragStart[1]);
+        adjustPosition(this);
     }).on("dragstart", function() {
         doBefore();
         onDrag = true;
         mouseOnDragStart = d3.mouse(this);
     }).on("dragend", function() {
+        adjustPosition(this);
         doAfter();        
         onDrag = false;
     });
