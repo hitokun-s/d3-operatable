@@ -75,9 +75,16 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
             self.transition().duration(ANIMATION_DURATION).attr(dest_cond);
         }
         //radiating circle as visual effect
-        self.append("circle").attr(
-                {cx: prev_mouse[0], cy: prev_mouse[1], r: 0, "fill-opacity": 1, fill: "black", stroke: "black"})
-                .transition().duration(ANIMATION_DURATION).attr({r: 50 * scale, "fill-opacity": 0}).remove();
+        self.append("circle").attr({
+            cx: prev_mouse[0], 
+            cy: prev_mouse[1], 
+            r: 0, 
+            "fill-opacity": 1, 
+            fill: "black", 
+            stroke: "black", 
+            "stroke-width":scale
+        })
+        .transition().duration(ANIMATION_DURATION).attr({r: 50 * scale, "fill-opacity": 0}).remove();
     };
 
     var zoom = d3.behavior.zoom().on("zoom", function(d) {
@@ -94,14 +101,18 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
         prop[1] = prop[1] - dy / zoom.scale();
         self.attr("viewBox", prop.join(" "));
     };
+    var mouseOnDragStart;
 
     var drag = d3.behavior.drag().on("drag", function() {
-        move(d3.event.dx, d3.event.dy);
+//        move(d3.event.dx, d3.event.dy); //this make position gap
+        var mouse = d3.mouse(this);
+        move(mouse[0] - mouseOnDragStart[0], mouse[1] - mouseOnDragStart[1]);
     }).on("dragstart", function() {
         doBefore();
         onDrag = true;
+        mouseOnDragStart = d3.mouse(this);
     }).on("dragend", function() {
-        doAfter();
+        doAfter();        
         onDrag = false;
     });
     self.call(drag);
