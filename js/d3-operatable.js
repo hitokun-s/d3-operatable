@@ -102,13 +102,14 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
 
     var move = function(dx, dy) {
         var prop = self.attr("viewBox").split(" ").map(Number);
-        prop[0] = prop[0] - dx / zoom.scale();
-        prop[1] = prop[1] - dy / zoom.scale();
+        prop[0] = prop[0] - dx ;
+        prop[1] = prop[1] - dy ;
         self.attr("viewBox", prop.join(" "));
     };
     var mouseOnDragStart;
     var adjustPosition = function(ctx){
         var mouse = d3.mouse(ctx);
+        console.log(mouse[0] - mouseOnDragStart[0]);
         move(mouse[0] - mouseOnDragStart[0], mouse[1] - mouseOnDragStart[1]);
     };
 
