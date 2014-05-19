@@ -13,7 +13,6 @@
                 height: 500px;
                 box-sizing: content-box;
                 margin:auto;
-                margin-top: 10%;
                 overflow: visible;
                 border:2px solid black;
                 position: relative;
@@ -29,17 +28,30 @@
         </style>
     </head>
     <body>
+        <h1>d3-operatable</h1>
+        <p>
+            You can operate this image like Google Map.
+        </p>
+            <ul>
+                <li>left/right double click</li>
+                <li>wheeling</li>
+                <li>dragging</li>
+            </ul>
+        <p>
+            The source code is available here.<br>
+            Please find the famous message by Ono Yoko.
+        </p>
         <div id="view">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                  viewBox="0 0 600 600" width="500" height="500">
-            <text x="250" y="400" font-family="impact" font-size="70" fill="none" stroke="blue" stroke-width="3">Hello</text>
-            <text x="350" y="480" font-family="impact" font-size="70" fill="blue" stroke="blue">World!</text>
+            <text x="100" y="300" font-family="impact" font-size="100" fill="none" stroke="blue" stroke-width="3">Hello</text>
+            <text x="200" y="380" font-family="impact" font-size="100" fill="blue" stroke="blue">World!</text>
 <!--            <text x="30,60,90,120,150" y="150,145,140,135,130" rotate="-10" font-family="impact" font-size="20" fill="black">Hello</text>
             <text x="70,100,130,160,190,220" y="170,165,160,155,150,145" rotate="-10" font-family="impact" font-size="20" fill="black">World!</text>-->
-            <text x="0" y="30" transform="rotate(-30)" font-family="impact" font-size="10" fill="black">yes</text>
+            <text x="20,25,30" y="30,27,24" rotate="-30" font-family="impact" font-size="6" fill="black">yes</text>
             <g transform="rotate(-40) translate(-5,40)">
-            <polygon fill="red" stroke="none" points="10,0 0,10 20,10" />
-            <rect x="5" y="10" width="10" height="20"  fill="red" stroke="none" />
+            <polygon fill="red" stroke="none" points="10,0 0,10 20,10"></polygon>
+            <rect x="5" y="10" width="10" height="20"  fill="red" stroke="none" ></rect>
             </g>
 </svg>
         </div>

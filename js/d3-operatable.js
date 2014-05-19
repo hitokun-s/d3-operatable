@@ -45,7 +45,7 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
 
     doBefore = doBefore || function() {};
     //add delay for animation effect of operation
-    doAfter = doAfter ? function() {setTimeout(doAfter, ANIMATION_DURATION + 100);} : function() {};
+    var doAfter2 = doAfter ? function() {setTimeout(doAfter, ANIMATION_DURATION + 100);} : function() {};
 
     var prop = self.attr("viewBox").split(" ").map(Number);
     var base_w = prop[2];
@@ -96,7 +96,7 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
         if (onDrag) return;
         doBefore();
         changeScale(1 / d3.event.scale, d3.mouse(this), d3.event.sourceEvent.type == "wheel");
-        doAfter();
+        doAfter2();
     });
     self.call(zoom);
 
@@ -122,7 +122,7 @@ d3.selection.prototype.operatable = function(doBefore, doAfter) {
         mouseOnDragStart = d3.mouse(this);
     }).on("dragend", function() {
         adjustPosition(this);
-        doAfter();        
+        doAfter2();
         onDrag = false;
     });
     self.call(drag);
