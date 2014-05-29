@@ -15,7 +15,7 @@ Zooming takes place around the mouse pointer.
 
 1. load d3-operatable.js after d3.js like this:  
    ```
-   <script src='js/d3.min.js'></script>
+   <script src='js/d3.min.js'></script>  
    <script src='js/d3-operatable.js'></script>
    ```
 2. call magic spell like this:  
