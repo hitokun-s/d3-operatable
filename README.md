@@ -19,8 +19,9 @@ Zooming takes place around the mouse pointer.
    ```<script src='js/d3-operatable.js'></script>```
 
 2. call magic spell like this:  
-
-   ```d3.select("svg").operatable();```
+   ```
+   d3.select("svg").operatable();
+   ```
 
 ### Demo Site
 [http://historip.com/playground/d3-operatable](http://historip.com/playground/d3-operatable)
